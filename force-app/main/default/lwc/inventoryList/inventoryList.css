@@ -1,0 +1,111 @@
+:host {
+    background-color: white !important;
+    display: block;
+    min-height: 100vh; 
+    --sds-c-button-text-color: #16191f !important; 
+}
+
+body, .slds-scope {
+    background-color: white !important;
+}
+
+.center-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff9900; 
+    padding: 10px 0;
+    margin-bottom: 20px; 
+}
+
+.center-container {
+    max-width: 50%;
+    margin: 0 auto; 
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.aws-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.aws-button {
+    --sds-c-button-brand-color-background: #ff9900; /* Primary button color */
+    --sds-c-button-brand-color-background-hover: #e68a00; /* Hover effect */
+    --sds-c-button-text-color: #16191f !important; 
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect */
+/* .aws-button:hover {
+    background: linear-gradient(to right, #e68a00, #cc7700);
+    transform: scale(1.05);
+} */
+
+.aws-input, .aws-input-short {
+    border: none !important; 
+    background: transparent;
+    padding: 10px;
+    width: 100%; 
+    outline: none; /* Remove focus outline */
+    box-shadow: none; 
+}
+
+.aws-input-short {
+    width: 45%; /* Keep input fields shorter */
+    display: inline-block;
+    margin-right: 10px; /* Space between fields */
+}
+
+.aws-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between elements */
+}
+
+.spacing {
+    margin-bottom: 20px; 
+}
+
+.table-container {
+    max-width: 80%;
+    /* margin-top: 20px; */
+    margin: 0 auto; /* Center horizontally */
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.filter-container {
+    max-width: 70%;
+    margin: 0 auto; /* Center horizontally */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* For small screens (responsive design) */
+@media (max-width: 768px) {
+    .aws-layout {
+        display: block; /* Stack the layout vertically on small screens */
+    }
+    .aws-input-short {
+        width: 100%; /* Ensure short inputs span full width on small screens */
+    }
+    .aws-button {
+        width: 100%; /* Ensure button spans full width on small screens */
+    }
+    .center-container {
+        max-width: 90%; /* Make form wider on smaller screens */
+    }
+}

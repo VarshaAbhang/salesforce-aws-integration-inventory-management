@@ -1,0 +1,134 @@
+<template>
+    <!-- Create Inventory Card Section -->
+    <div class="spacing center-container">
+        <lightning-card>
+            <h2 class="center-title">Inventory Management – AWS Integrated</h2>
+            <div class="spacing">                
+                <!-- Inventory Name -->
+                <lightning-input 
+                    label="Inventory Name" 
+                    value={newInventoryName} 
+                    onchange={handleInventoryNameChange} 
+                    class="aws-input-short">
+                </lightning-input>
+                
+                <!-- Status Dropdown -->
+                <lightning-combobox 
+                    label="Status" 
+                    options={statusOptions} 
+                    value={selectedStatus} 
+                    onchange={handleStatusChange} 
+                    class="aws-input-short">
+                </lightning-combobox>
+                
+                <!-- Quantity-->
+                <lightning-input 
+                    label="Quantity" 
+                    value={newQuantity} 
+                    onchange={handleQuantityChange} 
+                    type="number" 
+                    class="aws-input-short">
+                </lightning-input>
+
+                <!-- Product Dropdown -->
+                <lightning-combobox 
+                    label="Product" 
+                    options={productOptions} 
+                    value={selectedProduct} 
+                    onchange={handleProductChange} 
+                    class="aws-input-short">
+                </lightning-combobox>
+
+                <!-- Inventory Location Dropdown -->
+                <lightning-combobox 
+                    label="Inventory Location" 
+                    options={locationOptions} 
+                    value={selectedLocation} 
+                    onchange={handleLocationChange} 
+                    class="aws-input-short">
+                </lightning-combobox>
+
+                <!-- Synced with Dynamo Checkbox -->
+                <lightning-input 
+                    label="Synced with Dynamo" 
+                    type="checkbox" 
+                    checked={isSynced} 
+                    onchange={handleSyncChange} 
+                    class="aws-input-short">
+                </lightning-input>
+
+                <!-- Create Button-->
+                <div class="aws-button-container">
+                    <lightning-button 
+                        label="Add Inventory" 
+                        class="aws-button"
+                        variant="brand"
+                        onclick={handleCreateInventory}>
+                    </lightning-button>
+                </div>                
+            </div>
+        </lightning-card>
+    </div>
+    
+    <!-- Search Filters Section -->
+    <div class="spacing filter-container">
+        <lightning-layout horizontal-align="spread">
+
+            <lightning-layout-item size="6">
+                <lightning-combobox 
+                    class="aws-input"
+                    label="Filter by Status" 
+                    value={statusFilter} 
+                    options={statusOptions} 
+                    onchange={handleStatusFilterChange}>
+                </lightning-combobox>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="6">
+                <lightning-input 
+                    class="aws-input"
+                    label="Search by SKU" 
+                    value={searchSKU} 
+                    onchange={handleSearchChange} 
+                    placeholder="Enter SKU or Product Name">
+                </lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+
+    <!-- Inventory Table Section -->
+    <div class="table-container">
+        <c-custom-data-type 
+            key-field="Id" 
+            data={inventoryData} 
+            columns={columns} 
+            onsort={handleSort} 
+            sorted-by={sortedBy} 
+            sorted-direction={sortedDirection}
+            onsave={handleInventorysSave}
+            draft-values={draftValues}
+            onrowaction={rowActionHandler}
+            hide-checkbox-column>
+        </c-custom-data-type >
+    </div>
+
+    <!-- Pagination Buttons Section -->
+    <div class="aws-button-container">
+            <lightning-button 
+                class="aws-button"
+                label="Previous" 
+                onclick={handlePrevPage} 
+                variant="brand"
+                style="margin-right: 8px;"
+                disabled={isFirstPage}>
+            </lightning-button>
+
+        <lightning-button 
+            class="aws-button"
+            label="Next" 
+            onclick={handleNextPage} 
+            variant="brand"
+            disabled={isLastPage}>
+        </lightning-button>
+    </div>
+</template>
