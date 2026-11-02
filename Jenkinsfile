@@ -30,5 +30,11 @@ pipeline {
                 }
             }
         }
+
+        stage('Validate Salesforce Project') {
+            steps {
+                bat 'sf project deploy validate --source-dir force-app --target-org JenkinsDevOrg --test-level NoTestRun --wait 10'
+            }
+        }
     }
 }
