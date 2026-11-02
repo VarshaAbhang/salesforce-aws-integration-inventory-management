@@ -23,10 +23,7 @@ pipeline {
                     string(credentialsId: 'salesforce-consumer-key', variable: 'SF_CLIENT_ID'),
                     string(credentialsId: 'salesforce-username', variable: 'SF_USERNAME')
                 ]) {
-                    bat '''
-                    sf org login jwt --client-id "%SF_CLIENT_ID%" --jwt-key-file "%JWT_KEY_FILE%" --username "%SF_USERNAME%" --instance-url https://login.salesforce.com --alias JenkinsDevOrg --set-default
-                    sf org display --target-org JenkinsDevOrg
-                    '''
+                   bat 'sf project deploy validate --source-dir force-app --target-org JenkinsDevOrg --test-level RunLocalTests --wait 10'
                 }
             }
         }
